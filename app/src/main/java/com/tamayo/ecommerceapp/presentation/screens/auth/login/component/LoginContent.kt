@@ -20,8 +20,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -32,16 +30,20 @@ import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tamayo.ecomerceapp.R
+import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
 
 @ExperimentalMaterial3Api
 @Composable
 fun LoginContent(paddingValues: PaddingValues) {
-    Box(modifier = Modifier
-        .fillMaxSize()
-        .padding(paddingValues = paddingValues)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(paddingValues = paddingValues)
+    ) {
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.banner),
@@ -97,31 +99,24 @@ fun LoginContent(paddingValues: PaddingValues) {
                     )
 
 
-                    OutlinedTextField(modifier = Modifier.fillMaxWidth(),
+                    DefaultTextField(
+                        modifier = Modifier.fillMaxWidth(),
                         value = "",
-                        onValueChange = {},
-                        label = { Text(text = "Email") },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Email,
-                                contentDescription = "Ic_Email"
-                            )
-                        }
+                        onValueChanged = {},
+                        label = "Email",
+                        icon = Icons.Default.Email,
+                        keyboardType = KeyboardType.Email
                     )
 
                     Spacer(modifier = Modifier.size(5.dp))
 
-                    OutlinedTextField(modifier = Modifier.fillMaxWidth(),
+                    DefaultTextField(
+                        modifier = Modifier.fillMaxWidth(),
                         value = "",
-                        onValueChange = {},
-                        label = { Text(text = "Password") },
-                        leadingIcon = {
-                            Icon(
-                                imageVector = Icons.Default.Lock,
-                                contentDescription = "Ic_Password"
-                            )
-                        }
-
+                        onValueChanged = {},
+                        label = "Password",
+                        icon = Icons.Default.Lock,
+                        keyboardType = KeyboardType.Password
                     )
 
                     Button(modifier = Modifier
