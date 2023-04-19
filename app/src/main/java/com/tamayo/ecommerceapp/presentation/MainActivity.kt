@@ -1,4 +1,4 @@
-package com.tamayo.ecommerceapp
+package com.tamayo.ecommerceapp.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -20,12 +20,13 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -39,8 +40,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tamayo.ecomerceapp.R
-import com.tamayo.ecommerceapp.ui.theme.EcommerceAppTheme
-import com.tamayo.ecommerceapp.ui.theme.Purple80
+import com.tamayo.ecommerceapp.presentation.ui.theme.EcommerceAppTheme
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
@@ -104,7 +104,8 @@ fun LoginContent() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(330.dp),
-                shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp)
+                shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp),
+                colors = CardDefaults.cardColors(Color.White.copy(0.6f))
             ) {
 
                 Column(
@@ -114,46 +115,40 @@ fun LoginContent() {
                 ) {
 
                     Text(
+                        modifier = Modifier.padding(bottom = 16.dp),
                         text = "Sign In",
                         fontSize = 26.sp,
                         fontWeight = FontWeight.Bold,
                         color = Color.Black
                     )
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
 
-                        Icon(
-                            modifier = Modifier.size(32.dp),
-                            imageVector = Icons.Default.Email,
-                            contentDescription = "Ic_Email"
-                        )
-                        TextField(value = "", onValueChange = {}, label = { Text(text = "Email") })
-
-                    }
+                    OutlinedTextField(modifier = Modifier.fillMaxWidth(),
+                        value = "",
+                        onValueChange = {},
+                        label = { Text(text = "Email") },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Email,
+                                contentDescription = "Ic_Email"
+                            )
+                        }
+                    )
 
                     Spacer(modifier = Modifier.size(5.dp))
 
-                    Row(
-                        modifier = Modifier.fillMaxWidth(),
-                        verticalAlignment = Alignment.CenterVertically,
-                    ) {
+                    OutlinedTextField(modifier = Modifier.fillMaxWidth(),
+                        value = "",
+                        onValueChange = {},
+                        label = { Text(text = "Password") },
+                        leadingIcon = {
+                            Icon(
+                                imageVector = Icons.Default.Lock,
+                                contentDescription = "Ic_Password"
+                            )
+                        }
 
-                        Icon(
-                            modifier = Modifier.size(32.dp),
-                            imageVector = Icons.Default.Lock,
-                            contentDescription = "Ic_Email"
-                        )
-                        TextField(
-                            value = "",
-                            onValueChange = {},
-                            label = { Text(text = "Password") })
-
-                    }
-
-
+                    )
 
                     Button(modifier = Modifier
                         .fillMaxWidth()
@@ -170,8 +165,8 @@ fun LoginContent() {
                         horizontalArrangement = Arrangement.Center
                     ) {
 
-                        Text(text = "Don't have an account? ", fontWeight = FontWeight.SemiBold)
-                        Text(text = "Sign Up", fontWeight = FontWeight.Bold, color = Purple80)
+                        Text(text = "Don't have an account? ", fontWeight = FontWeight.SemiBold, color = Color.DarkGray)
+                        Text(text = "Sign Up", fontWeight = FontWeight.Bold, color = Color.Black)
 
                     }
 

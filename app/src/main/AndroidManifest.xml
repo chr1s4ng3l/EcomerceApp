@@ -13,7 +13,7 @@
         android:theme="@style/Theme.EcomerceApp"
         tools:targetApi="31">
         <activity
-            android:name="com.tamayo.ecommerceapp.MainActivity"
+            android:name="com.tamayo.ecommerceapp.presentation.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.EcomerceApp">

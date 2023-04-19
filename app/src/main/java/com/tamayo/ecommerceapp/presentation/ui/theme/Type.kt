@@ -1,4 +1,4 @@
-package com.tamayo.ecommerceapp.ui.theme
+package com.tamayo.ecommerceapp.presentation.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
