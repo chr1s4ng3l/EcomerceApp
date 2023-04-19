@@ -16,7 +16,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -34,7 +33,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tamayo.ecomerceapp.R
+import com.tamayo.ecommerceapp.presentation.components.DefaultButton
 import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
+import com.tamayo.ecommerceapp.presentation.ui.theme.Pink80
+import com.tamayo.ecommerceapp.presentation.ui.theme.Wine80
 
 @ExperimentalMaterial3Api
 @Composable
@@ -81,7 +83,7 @@ fun LoginContent(paddingValues: PaddingValues) {
                     .fillMaxWidth()
                     .height(350.dp),
                 shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp),
-                colors = CardDefaults.cardColors(Color.White.copy(0.6f))
+                colors = CardDefaults.cardColors(Color.White.copy(0.7f))
             ) {
 
                 Column(
@@ -118,14 +120,17 @@ fun LoginContent(paddingValues: PaddingValues) {
                         icon = Icons.Default.Lock,
                         keyboardType = KeyboardType.Password
                     )
+                    
+                    Spacer(modifier = Modifier.size(16.dp))
 
-                    Button(modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 24.dp), onClick = { }) {
-
-                        Text(text = "LOGIN")
-
-                    }
+                    DefaultButton(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp),
+                        textButton = "Log In",
+                        color = Pink80,
+                        textColor = Wine80,
+                        onClick = { })
 
                     Row(
                         modifier = Modifier
