@@ -35,8 +35,7 @@ import androidx.compose.ui.unit.sp
 import com.tamayo.ecomerceapp.R
 import com.tamayo.ecommerceapp.presentation.components.DefaultButton
 import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
-import com.tamayo.ecommerceapp.presentation.ui.theme.Pink80
-import com.tamayo.ecommerceapp.presentation.ui.theme.Wine80
+import com.tamayo.ecommerceapp.presentation.ui.theme.Blue80
 
 @ExperimentalMaterial3Api
 @Composable
@@ -128,8 +127,8 @@ fun LoginContent(paddingValues: PaddingValues) {
                             .fillMaxWidth()
                             .height(50.dp),
                         textButton = "Log In",
-                        color = Pink80,
-                        textColor = Wine80,
+                        color = Blue80,
+                        textColor = Color.White,
                         onClick = { })
 
                     Row(

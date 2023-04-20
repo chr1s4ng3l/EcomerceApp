@@ -2,7 +2,6 @@ package com.tamayo.ecommerceapp.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
@@ -38,7 +37,6 @@ private val LightColorScheme = lightColorScheme(
     */
 )
 
-@RequiresApi(Build.VERSION_CODES.Q)
 @Composable
 fun EcommerceAppTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -59,7 +57,7 @@ fun EcommerceAppTheme(
     if (!view.isInEditMode) {
         SideEffect {
             val window = (view.context as Activity).window
-            window.statusBarColor = Pink80.toArgb()
+            window.statusBarColor = colorScheme.primary.toArgb()
             WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
         }
     }
