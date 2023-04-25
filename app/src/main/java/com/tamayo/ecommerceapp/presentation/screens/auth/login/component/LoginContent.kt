@@ -1,6 +1,7 @@
 package com.tamayo.ecommerceapp.presentation.screens.auth.login.component
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -32,14 +33,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.tamayo.ecomerceapp.R
 import com.tamayo.ecommerceapp.presentation.components.DefaultButton
 import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
+import com.tamayo.ecommerceapp.presentation.navifation.screen.AuthScreen
 import com.tamayo.ecommerceapp.presentation.ui.theme.Blue80
 
 @ExperimentalMaterial3Api
 @Composable
-fun LoginContent(paddingValues: PaddingValues) {
+fun LoginContent(paddingValues: PaddingValues, navHostController: NavHostController) {
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -119,7 +122,7 @@ fun LoginContent(paddingValues: PaddingValues) {
                         icon = Icons.Default.Lock,
                         keyboardType = KeyboardType.Password
                     )
-                    
+
                     Spacer(modifier = Modifier.size(16.dp))
 
                     DefaultButton(
@@ -143,7 +146,9 @@ fun LoginContent(paddingValues: PaddingValues) {
                             fontWeight = FontWeight.SemiBold,
                             color = Color.DarkGray
                         )
-                        Text(text = "Sign Up", fontWeight = FontWeight.Bold, color = Color.Black)
+                        Text(modifier = Modifier.clickable {
+                            navHostController.navigate(AuthScreen.Register.route)
+                        }, text = "Sign Up", fontWeight = FontWeight.Bold, color = Color.Black)
 
                     }
 

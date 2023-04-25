@@ -4,15 +4,15 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import com.tamayo.ecommerceapp.presentation.screens.auth.login.component.LoginContent
 
-@Preview
 @ExperimentalMaterial3Api
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navHostController: NavHostController) {
 
     Scaffold(){paddingValues ->
-        LoginContent(paddingValues)
+        LoginContent(paddingValues, navHostController)
     }
     
 }

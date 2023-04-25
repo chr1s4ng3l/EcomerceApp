@@ -8,19 +8,20 @@ import androidx.navigation.navigation
 import com.tamayo.ecommerceapp.presentation.navifation.Graph
 import com.tamayo.ecommerceapp.presentation.navifation.screen.AuthScreen
 import com.tamayo.ecommerceapp.presentation.screens.auth.login.LoginScreen
+import com.tamayo.ecommerceapp.presentation.screens.auth.register.RegisterScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
-fun NavGraphBuilder.AuthNavGraph(navHostController: NavHostController){
+fun NavGraphBuilder.authNavGraph(navHostController: NavHostController){
     navigation(
         route = Graph.AUTH,
         startDestination = AuthScreen.Login.route
     ){
         composable(route = AuthScreen.Login.route){
-            LoginScreen()
+            LoginScreen(navHostController)
         }
 
         composable(route = AuthScreen.Register.route){
-          //  RegisterScreen()
+          RegisterScreen(navHostController)
         }
     }
 }
