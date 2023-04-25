@@ -10,10 +10,16 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.tamayo.ecommerceapp.presentation.navifation.graph.RootNavGraph
 import com.tamayo.ecommerceapp.presentation.screens.auth.login.LoginScreen
 import com.tamayo.ecommerceapp.presentation.ui.theme.EcommerceAppTheme
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var navHostController: NavHostController
+
     @ExperimentalMaterial3Api
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,9 +30,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    
+                    navHostController = rememberNavController()
 
-                    LoginScreen()
-
+                    RootNavGraph(navHostController = navHostController)
                 }
             }
         }
