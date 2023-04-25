@@ -82,7 +82,7 @@ fun LoginContent(paddingValues: PaddingValues) {
                     .fillMaxWidth()
                     .height(350.dp),
                 shape = RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp),
-                colors = CardDefaults.cardColors(Color.White.copy(0.7f))
+                colors = CardDefaults.cardColors(Color.White.copy(0.9f))
             ) {
 
                 Column(
