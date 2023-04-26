@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.tamayo.ecommerceapp.presentation.ui.theme.Blue80
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -23,15 +24,15 @@ fun DefaultTopBar(
 ) {
 
     TopAppBar(
-        title = { Text(text = title, fontSize = 18.sp, fontWeight = FontWeight.Bold) },
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Color.White),
+        title = { Text(text = title, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White) },
+        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Blue80),
         navigationIcon = {
             if (upAvailable){
             IconButton(onClick = { navHostController?.popBackStack() }) {
                 Icon(
                     imageVector = Icons.Default.ArrowBack,
                     contentDescription = "ArrowBackIcon",
-                    tint = Color.Black
+                    tint = Color.White
                 )
 
             }
