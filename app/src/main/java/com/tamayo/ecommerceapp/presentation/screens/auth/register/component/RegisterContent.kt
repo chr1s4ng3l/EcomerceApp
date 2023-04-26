@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -32,6 +33,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.tamayo.ecomerceapp.R
@@ -107,7 +109,7 @@ fun RegisterContent(paddingValues: PaddingValues) {
                         onValueChanged = {},
                         label = "Name",
                         icon = Icons.Default.Person,
-                        keyboardType = KeyboardType.Text
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
                     )
 
                     Spacer(modifier = Modifier.size(5.dp))
@@ -118,7 +120,7 @@ fun RegisterContent(paddingValues: PaddingValues) {
                         onValueChanged = {},
                         label = "Last Name",
                         icon = Icons.Outlined.Person,
-                        keyboardType = KeyboardType.Text
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
                     )
 
                     Spacer(modifier = Modifier.size(5.dp))
@@ -129,7 +131,7 @@ fun RegisterContent(paddingValues: PaddingValues) {
                         onValueChanged = {},
                         label = "Email",
                         icon = Icons.Default.Email,
-                        keyboardType = KeyboardType.Email
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
                     )
 
                     Spacer(modifier = Modifier.size(5.dp))
@@ -140,7 +142,7 @@ fun RegisterContent(paddingValues: PaddingValues) {
                         onValueChanged = {},
                         label = "Phone",
                         icon = Icons.Default.Phone,
-                        keyboardType = KeyboardType.Phone
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
                     )
 
                     Spacer(modifier = Modifier.size(5.dp))
@@ -151,7 +153,9 @@ fun RegisterContent(paddingValues: PaddingValues) {
                         onValueChanged = {},
                         label = "Password",
                         icon = Icons.Default.Lock,
-                        keyboardType = KeyboardType.Password
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                        visualTransformation = PasswordVisualTransformation()
+
                     )
 
                     Spacer(modifier = Modifier.size(5.dp))
@@ -162,7 +166,9 @@ fun RegisterContent(paddingValues: PaddingValues) {
                         onValueChanged = {},
                         label = "Confirm Password",
                         icon = Icons.Outlined.Lock,
-                        keyboardType = KeyboardType.Password
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+                        visualTransformation = PasswordVisualTransformation()
+
                     )
 
                     Spacer(modifier = Modifier.size(16.dp))

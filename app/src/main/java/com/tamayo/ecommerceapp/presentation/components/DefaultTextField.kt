@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
@@ -25,7 +27,8 @@ fun DefaultTextField(
     onValueChanged: (value: String) -> Unit,
     label: String,
     icon: ImageVector,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+    visualTransformation: VisualTransformation = VisualTransformation.None
 ) {
 
     OutlinedTextField(
@@ -40,7 +43,11 @@ fun DefaultTextField(
                 imageVector = icon,
                 contentDescription = "icon"
             )
-        }, keyboardOptions = KeyboardOptions(keyboardType = keyboardType)
+        },
+        keyboardOptions = keyboardOptions,
+
+        visualTransformation = visualTransformation
+
 
     )
 
