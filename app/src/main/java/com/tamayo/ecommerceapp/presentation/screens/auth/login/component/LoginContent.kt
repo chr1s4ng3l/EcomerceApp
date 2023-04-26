@@ -2,6 +2,7 @@ package com.tamayo.ecommerceapp.presentation.screens.auth.login.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,8 +14,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
@@ -39,25 +42,22 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.tamayo.ecomerceapp.R
 import com.tamayo.ecommerceapp.presentation.components.DefaultButton
 import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
 import com.tamayo.ecommerceapp.presentation.navifation.screen.AuthScreen
+import com.tamayo.ecommerceapp.presentation.screens.auth.login.LoginViewModel
 import com.tamayo.ecommerceapp.presentation.ui.theme.Blue80
 
 @ExperimentalMaterial3Api
 @Composable
-fun LoginContent(paddingValues: PaddingValues, navHostController: NavHostController) {
-
-    var emailState by rememberSaveable {
-        mutableStateOf("")
-    }
-
-    var passwordState by rememberSaveable {
-        mutableStateOf("")
-    }
-
+fun LoginContent(
+    paddingValues: PaddingValues,
+    navHostController: NavHostController,
+    vm: LoginViewModel = hiltViewModel()
+) {
 
     Box(
         modifier = Modifier
@@ -108,6 +108,7 @@ fun LoginContent(paddingValues: PaddingValues, navHostController: NavHostControl
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
+                        .verticalScroll(rememberScrollState())
                 ) {
 
                     Text(
@@ -121,8 +122,8 @@ fun LoginContent(paddingValues: PaddingValues, navHostController: NavHostControl
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = emailState,
-                        onValueChanged = {emailState = it},
+                        value = vm.emailState,
+                        onValueChanged = { vm.emailState = it },
                         label = "Email",
                         icon = Icons.Default.Email,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
@@ -132,8 +133,8 @@ fun LoginContent(paddingValues: PaddingValues, navHostController: NavHostControl
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = passwordState,
-                        onValueChanged = {passwordState = it},
+                        value = vm.passwordState,
+                        onValueChanged = { vm.passwordState = it },
                         label = "Password",
                         icon = Icons.Default.Lock,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
