@@ -35,16 +35,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.tamayo.ecomerceapp.R
 import com.tamayo.ecommerceapp.presentation.components.DefaultButton
 import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
+import com.tamayo.ecommerceapp.presentation.screens.auth.register.RegisterViewModel
 import com.tamayo.ecommerceapp.presentation.ui.theme.Blue80
 
 @Composable
-fun RegisterContent(paddingValues: PaddingValues) {
+fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltViewModel()) {
 
     Box(
         modifier = Modifier
@@ -94,7 +95,8 @@ fun RegisterContent(paddingValues: PaddingValues) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(16.dp).verticalScroll(rememberScrollState())
+                        .padding(start = 16.dp, end = 16.dp, bottom = 8.dp, top = 8.dp)
+                        .verticalScroll(rememberScrollState())
 
                 ) {
 
@@ -108,8 +110,8 @@ fun RegisterContent(paddingValues: PaddingValues) {
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChanged = {},
+                        value = vm.state.name,
+                        onValueChanged = {vm.onNameInput(it)},
                         label = "Name",
                         icon = Icons.Default.Person,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
@@ -119,8 +121,8 @@ fun RegisterContent(paddingValues: PaddingValues) {
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChanged = {},
+                        value = vm.state.lastName,
+                        onValueChanged = {vm.onLastNameInput(it)},
                         label = "Last Name",
                         icon = Icons.Outlined.Person,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
@@ -130,8 +132,8 @@ fun RegisterContent(paddingValues: PaddingValues) {
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChanged = {},
+                        value = vm.state.email,
+                        onValueChanged = {vm.onEmailInput(it)},
                         label = "Email",
                         icon = Icons.Default.Email,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
@@ -141,8 +143,8 @@ fun RegisterContent(paddingValues: PaddingValues) {
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChanged = {},
+                        value = vm.state.phone,
+                        onValueChanged = {vm.onPhoneInput(it)},
                         label = "Phone",
                         icon = Icons.Default.Phone,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
@@ -152,12 +154,12 @@ fun RegisterContent(paddingValues: PaddingValues) {
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChanged = {},
+                        value = vm.state.password,
+                        onValueChanged = {vm.onPasswordInput(it)},
                         label = "Password",
                         icon = Icons.Default.Lock,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                        visualTransformation = PasswordVisualTransformation()
+                        hideText = true
 
                     )
 
@@ -165,12 +167,12 @@ fun RegisterContent(paddingValues: PaddingValues) {
 
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        value = "",
-                        onValueChanged = {},
+                        value = vm.state.confirmPassword,
+                        onValueChanged = {vm.onConfirmPasswordInput(it)},
                         label = "Confirm Password",
                         icon = Icons.Outlined.Lock,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-                        visualTransformation = PasswordVisualTransformation()
+                        hideText = true
 
                     )
 

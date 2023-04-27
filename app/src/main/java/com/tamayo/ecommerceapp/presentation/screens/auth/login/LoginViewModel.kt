@@ -8,10 +8,18 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginViewModel @Inject constructor(): ViewModel() {
+class LoginViewModel @Inject constructor() : ViewModel() {
 
-    var emailState by mutableStateOf("")
-    var passwordState by mutableStateOf("")
+    var state by mutableStateOf(LoginState())
+        private set
+
+    fun onEmailInput(email: String) {
+        state = state.copy(email = email)
+    }
+
+    fun onPasswordInput(password: String) {
+        state = state.copy(password = password)
+    }
 
 
 }

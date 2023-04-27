@@ -1,7 +1,6 @@
 package com.tamayo.ecommerceapp.presentation.components
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -11,13 +10,11 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,7 +25,7 @@ fun DefaultTextField(
     label: String,
     icon: ImageVector,
     keyboardOptions: KeyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
-    visualTransformation: VisualTransformation = VisualTransformation.None
+    hideText: Boolean = false
 ) {
 
     OutlinedTextField(
@@ -46,7 +43,7 @@ fun DefaultTextField(
         },
         keyboardOptions = keyboardOptions,
 
-        visualTransformation = visualTransformation
+        visualTransformation = if (hideText) PasswordVisualTransformation() else VisualTransformation.None
 
 
     )
