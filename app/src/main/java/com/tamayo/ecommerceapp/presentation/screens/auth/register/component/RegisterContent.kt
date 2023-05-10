@@ -1,5 +1,6 @@
 package com.tamayo.ecommerceapp.presentation.screens.auth.register.component
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,12 +27,14 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.ColorMatrix
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -46,6 +49,13 @@ import com.tamayo.ecommerceapp.presentation.ui.theme.Blue80
 
 @Composable
 fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltViewModel()) {
+
+    val context = LocalContext.current
+
+    LaunchedEffect(key1 = vm.errorMessage) {
+        if (vm.errorMessage != "") Toast.makeText(context, vm.errorMessage, Toast.LENGTH_SHORT)
+            .show()
+    }
 
     Box(
         modifier = Modifier
@@ -111,7 +121,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = vm.state.name,
-                        onValueChanged = {vm.onNameInput(it)},
+                        onValueChanged = { vm.onNameInput(it) },
                         label = "Name",
                         icon = Icons.Default.Person,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
@@ -122,7 +132,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = vm.state.lastName,
-                        onValueChanged = {vm.onLastNameInput(it)},
+                        onValueChanged = { vm.onLastNameInput(it) },
                         label = "Last Name",
                         icon = Icons.Outlined.Person,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
@@ -133,7 +143,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = vm.state.email,
-                        onValueChanged = {vm.onEmailInput(it)},
+                        onValueChanged = { vm.onEmailInput(it) },
                         label = "Email",
                         icon = Icons.Default.Email,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email)
@@ -144,7 +154,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = vm.state.phone,
-                        onValueChanged = {vm.onPhoneInput(it)},
+                        onValueChanged = { vm.onPhoneInput(it) },
                         label = "Phone",
                         icon = Icons.Default.Phone,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
@@ -155,7 +165,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = vm.state.password,
-                        onValueChanged = {vm.onPasswordInput(it)},
+                        onValueChanged = { vm.onPasswordInput(it) },
                         label = "Password",
                         icon = Icons.Default.Lock,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -168,7 +178,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = vm.state.confirmPassword,
-                        onValueChanged = {vm.onConfirmPasswordInput(it)},
+                        onValueChanged = { vm.onConfirmPasswordInput(it) },
                         label = "Confirm Password",
                         icon = Icons.Outlined.Lock,
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -185,7 +195,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                         textButton = "Confirm",
                         color = Blue80,
                         textColor = Color.White,
-                        onClick = { })
+                        onClick = { vm.validateForm() })
 
                 }
 
