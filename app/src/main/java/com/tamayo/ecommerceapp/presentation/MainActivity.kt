@@ -10,7 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.tamayo.ecommerceapp.presentation.navifation.graph.RootNavGraph
+import com.tamayo.ecommerceapp.presentation.navigation.graph.RootNavGraph
 import com.tamayo.ecommerceapp.presentation.ui.theme.EcommerceAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 

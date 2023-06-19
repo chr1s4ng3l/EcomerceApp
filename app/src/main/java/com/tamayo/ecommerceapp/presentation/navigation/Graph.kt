@@ -1,4 +1,4 @@
-package com.tamayo.ecommerceapp.presentation.navifation
+package com.tamayo.ecommerceapp.presentation.navigation
 
 object Graph {
 

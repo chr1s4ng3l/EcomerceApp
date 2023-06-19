@@ -1,9 +1,9 @@
-package com.tamayo.ecommerceapp.presentation.navifation.graph
+package com.tamayo.ecommerceapp.presentation.navigation.graph
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.tamayo.ecommerceapp.presentation.navifation.Graph
+import com.tamayo.ecommerceapp.presentation.navigation.Graph
 
 @Composable
 fun RootNavGraph(navHostController: NavHostController) {

@@ -46,6 +46,9 @@ class RegisterViewModel @Inject constructor() : ViewModel() {
     }
 
 
+
+
+
     fun validateForm() =  viewModelScope.launch {
 
         if (state.name.isEmpty()){

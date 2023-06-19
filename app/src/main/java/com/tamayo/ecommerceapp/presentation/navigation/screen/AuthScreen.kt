@@ -1,4 +1,4 @@
-package com.tamayo.ecommerceapp.presentation.navifation.screen
+package com.tamayo.ecommerceapp.presentation.navigation.screen
 
 sealed class AuthScreen(val route: String){
     object Login: AuthScreen("login")
