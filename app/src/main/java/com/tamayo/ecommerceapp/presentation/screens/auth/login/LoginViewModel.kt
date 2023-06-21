@@ -1,5 +1,6 @@
 package com.tamayo.ecommerceapp.presentation.screens.auth.login
 
+import android.util.Log
 import android.util.Patterns
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -25,12 +26,15 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
 
     // LOGIN RESPONSE
     var loginResponse by mutableStateOf<ResultState<User>?>(null)
-    private set
+        private set
 
     fun login() = viewModelScope.launch {
-        loginResponse = ResultState.Loading // Waiting for data
-        val result = authUseCase.login(state.email, state.password) //Return the request
-        loginResponse = result // Success
+        if (isValidateForm()) {
+            loginResponse = ResultState.Loading // Waiting for data
+            val result = authUseCase.login(state.email, state.password) //Return the request
+            loginResponse = result // Success
+            Log.d("LoginViewModel", "Response => $loginResponse")
+        }
 
     }
 
@@ -43,16 +47,17 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
     }
 
 
-    fun validateForm() = viewModelScope.launch {
+    fun isValidateForm(): Boolean {
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
             errorMessage = "Invalid email"
+            return false
 
-        }else if (state.password.length <6) errorMessage = "Password must contain at least 6 characters"
-
-
-        delay(3000)
-        errorMessage = ""
+        } else if (state.password.length < 6) {
+            errorMessage = "Password must contain at least 6 characters"
+            return false
+        }
+        return true
     }
 
 

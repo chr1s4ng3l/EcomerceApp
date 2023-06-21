@@ -155,7 +155,7 @@ fun LoginContent(
                         textButton = "Log In",
                         color = Blue80,
                         textColor = Color.White,
-                        onClick = { vm.validateForm() })
+                        onClick = { vm.login() })
 
                     Row(
                         modifier = Modifier

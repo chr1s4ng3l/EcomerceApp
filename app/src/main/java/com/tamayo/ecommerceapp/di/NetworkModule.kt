@@ -30,6 +30,9 @@ object NetworkModule {
             .client(okHttpClient)
             .build()
 
+    @Provides
+    @Singleton
+    fun providesGson(): Gson = Gson()
 
     @Provides
     @Singleton
