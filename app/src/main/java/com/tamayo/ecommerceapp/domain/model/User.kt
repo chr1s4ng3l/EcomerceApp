@@ -1,5 +1,6 @@
 package com.tamayo.ecommerceapp.domain.model
 
+import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 
 data class User(
@@ -19,6 +20,10 @@ data class User(
     val image: String? = null,
     @SerializedName("notification_token")
     val notificationToke: String? = null,
+) {
+    fun toJson(): String = Gson().toJson(this)
 
-
-)
+    companion object {
+        fun fromJson(data: String): User = Gson().fromJson(data, User::class.java)
+    }
+}
