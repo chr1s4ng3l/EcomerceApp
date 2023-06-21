@@ -50,5 +50,5 @@ fun MyButtonPreview() {
         modifier = Modifier.fillMaxWidth().height(50.dp),
         textButton = "My Button" ,
         textColor = Color.Black,
-        onClick = { /*TODO*/ })
+        onClick = {  })
 }
