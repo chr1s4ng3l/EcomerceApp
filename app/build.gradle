@@ -78,6 +78,27 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
 
 
+    /**
+     * GSON - A Java library that can be used to convert Java Objects into their JSON representation and vice versa.
+     * Docs: https://www.javadoc.io/doc/com.google.code.gson/gson/latest/index.html
+     **/
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    /*
+     * Retrofit - A type-safe HTTP client for Android and Java.
+     * Docs: https://square.github.io/retrofit/2.x/retrofit/
+     */
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+
+    /**
+     * Okhttp - A modern HTTP client for Android and Java.
+     * Docs: https://square.github.io/okhttp/4.x/okhttp/
+     */
+    implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.6'
+    implementation "com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.6"
+
+
 }
 
 // Allow references to generated code
