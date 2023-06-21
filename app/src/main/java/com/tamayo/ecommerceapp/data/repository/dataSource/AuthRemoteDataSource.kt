@@ -5,5 +5,5 @@ import retrofit2.Response
 
 interface AuthRemoteDataSource {
 
-    suspend fun login(): Response<User>
+    suspend fun login(email: String, password: String): Response<User>
 }
