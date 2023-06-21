@@ -1,4 +1,4 @@
-package com.tamayo.ecommerceapp.domain.repository
+package com.tamayo.ecommerceapp.domain.util
 
 import java.lang.Exception
 
