@@ -1,6 +1,7 @@
 package com.tamayo.ecommerceapp.data.service
 
 import com.tamayo.ecommerceapp.core.Config.AUTH
+import com.tamayo.ecommerceapp.domain.model.AuthResponse
 import com.tamayo.ecommerceapp.domain.model.User
 import retrofit2.Response
 import retrofit2.http.Field
@@ -15,7 +16,7 @@ interface AuthService {
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String
-    ): Response<User>
+    ): Response<AuthResponse>
 
 
 
