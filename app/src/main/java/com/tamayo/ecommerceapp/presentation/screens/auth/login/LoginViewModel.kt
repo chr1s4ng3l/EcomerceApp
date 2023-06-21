@@ -7,6 +7,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.tamayo.ecommerceapp.domain.model.AuthResponse
 import com.tamayo.ecommerceapp.domain.model.User
 import com.tamayo.ecommerceapp.domain.util.ResultState
 import com.tamayo.ecommerceapp.domain.usecases.auth.AuthUseCase
@@ -25,7 +26,7 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
         private set
 
     // LOGIN RESPONSE
-    var loginResponse by mutableStateOf<ResultState<User>?>(null)
+    var loginResponse by mutableStateOf<ResultState<AuthResponse>?>(null)
         private set
 
     fun login() = viewModelScope.launch {
