@@ -23,7 +23,6 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
         private set
 
     var errorMessage by mutableStateOf("")
-        private set
 
     // LOGIN RESPONSE
     var loginResponse by mutableStateOf<ResultState<AuthResponse>?>(null)
