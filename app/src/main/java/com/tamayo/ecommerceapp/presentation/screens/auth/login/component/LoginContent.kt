@@ -60,7 +60,10 @@ fun LoginContent(
     val context = LocalContext.current
 
     LaunchedEffect(key1 = vm.errorMessage){
-        if (vm.errorMessage != "") Toast.makeText(context, vm.errorMessage, Toast.LENGTH_SHORT).show()
+        if (vm.errorMessage != "") {
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_SHORT).show()
+            vm.errorMessage = ""
+        }
 
     }
 
