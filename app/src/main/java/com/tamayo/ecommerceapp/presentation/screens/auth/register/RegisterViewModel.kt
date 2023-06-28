@@ -24,21 +24,24 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
     var state by mutableStateOf(RegisterState())
         private set
     var errorMessage by mutableStateOf("")
-        private set
 
     var registerResponse by mutableStateOf<ResultState<AuthResponse>?>(null)
+        private set
+
 
     fun register() = viewModelScope.launch {
-        val user = User(
-            name = state.name,
-            lastname = state.lastName,
-            email = state.email,
-            password = state.password,
-            phone = state.phone
-        )
-        registerResponse = ResultState.Loading
-        val result = authUseCase.register(user)
-        registerResponse = result //Data or Error
+        if (isValidateForm()) {
+            val user = User(
+                name = state.name,
+                lastname = state.lastName,
+                email = state.email,
+                password = state.password,
+                phone = state.phone
+            )
+            registerResponse = ResultState.Loading
+            val result = authUseCase.register(user)
+            registerResponse = result //Data or Error
+        }
     }
 
     fun onNameInput(name: String) {
@@ -66,29 +69,37 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
     }
 
 
-    fun validateForm() = viewModelScope.launch {
+    fun isValidateForm(): Boolean {
 
         if (state.name.isEmpty()) {
             errorMessage = "Name required"
+            return false
 
         } else if (state.lastName.isEmpty()) {
             errorMessage = "Last Name required"
+            return false
+
 
         } else if (!Patterns.EMAIL_ADDRESS.matcher(state.email).matches()) {
             errorMessage = "Invalid email"
+            return false
+
 
         } else if (state.phone.isEmpty()) {
             errorMessage = "Phone number required"
+            return false
+
 
         } else if (state.password.length < 6) {
             errorMessage = "Password must contain at least 6 characters"
+            return false
+
 
         } else if (state.password != state.confirmPassword) {
             errorMessage = "Passwords must be the same"
+            return false
+
         }
-
-        delay(3000)
-
-        errorMessage = ""
+        return true
     }
 }

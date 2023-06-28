@@ -53,8 +53,10 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
     val context = LocalContext.current
 
     LaunchedEffect(key1 = vm.errorMessage) {
-        if (vm.errorMessage != "") Toast.makeText(context, vm.errorMessage, Toast.LENGTH_SHORT)
-            .show()
+        if (vm.errorMessage != "") {
+            Toast.makeText(context, vm.errorMessage, Toast.LENGTH_SHORT).show()
+            vm.errorMessage = ""
+        }
     }
 
     Box(
@@ -195,7 +197,7 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                         textButton = "Confirm",
                         color = Blue80,
                         textColor = Color.White,
-                        onClick = { vm.validateForm() })
+                        onClick = { vm.register() })
 
                 }
 

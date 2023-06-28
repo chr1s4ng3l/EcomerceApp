@@ -29,9 +29,7 @@ fun Login(navHostController: NavHostController, vm: LoginViewModel = hiltViewMod
         }
 
         ResultState.Loading -> {
-            Box(modifier = Modifier.fillMaxSize()) {
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }
+            ProgressBar()
         }
 
         is ResultState.Success -> {
