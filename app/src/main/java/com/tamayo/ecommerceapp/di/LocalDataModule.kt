@@ -7,6 +7,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStoreFile
 import com.tamayo.ecommerceapp.core.Config.AUTH_PREF
 import com.tamayo.ecommerceapp.data.datastore.AuthDataStore
+import com.tamayo.ecommerceapp.data.repository.dataSource.AuthLocalDataSource
+import com.tamayo.ecommerceapp.data.repository.dataSource.AuthRemoteDataSource
+import com.tamayo.ecommerceapp.data.repository.dataSourceImpl.AuthLocalDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,19 +19,10 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object DataStoreModule {
+object LocalDataModule {
 
     @Provides
     @Singleton
-    fun providePreferenceDataStore(@ApplicationContext context: Context): DataStore<Preferences> =
-        PreferenceDataStoreFactory.create(
-            produceFile = {
-                context.preferencesDataStoreFile(AUTH_PREF)
-            }
-        )
-
-    @Provides
-    @Singleton
-    fun provideAuthDataStore(dataStore: DataStore<Preferences>) = AuthDataStore(dataStore)
-
+    fun provideAuthLocalDataStore(authDataStore: AuthDataStore): AuthLocalDataSource =
+        AuthLocalDataSourceImpl(authDataStore)
 }
