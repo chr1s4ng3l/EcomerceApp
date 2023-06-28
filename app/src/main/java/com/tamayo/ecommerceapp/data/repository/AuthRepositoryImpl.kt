@@ -37,4 +37,30 @@ class AuthRepositoryImpl(private val authRemoteDataSource: AuthRemoteDataSource)
         }
     }
 
+    override suspend fun register(user: User): ResultState<AuthResponse> {
+        return try {
+            val result = authRemoteDataSource.register(user)
+
+            if (result.isSuccessful) { // 201
+                ResultState.Success(result.body()!!)
+
+            } else {
+                val errorResponse: ErrorResponse? =
+                    ConvertErrorBody.convertErrorBody(result.errorBody())
+                ResultState.Failure(errorResponse?.message ?: "Unexpected error")
+            }
+
+
+        } catch (e: HttpException) {
+            e.printStackTrace()
+            ResultState.Failure(e.message ?: "Http error request")
+        } catch (e: IOException) {
+            e.printStackTrace()
+            ResultState.Failure("Check your network connection")
+        } catch (e: Exception) {
+            e.printStackTrace()
+            ResultState.Failure(e.message ?: "Unexpected error")
+        }
+    }
+
 }
