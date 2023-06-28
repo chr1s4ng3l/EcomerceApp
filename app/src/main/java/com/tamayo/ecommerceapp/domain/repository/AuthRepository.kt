@@ -7,5 +7,6 @@ import com.tamayo.ecommerceapp.domain.util.ResultState
 interface AuthRepository {
 
     suspend fun login(email: String, password: String): ResultState<AuthResponse>
+    suspend fun register(user: User): ResultState<AuthResponse>
 
 }
