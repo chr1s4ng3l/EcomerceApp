@@ -2,6 +2,7 @@ package com.tamayo.ecommerceapp.presentation.screens.auth.register.component
 
 import android.widget.Toast
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -23,7 +24,9 @@ fun Register(navHostController: NavHostController, vm: RegisterViewModel = hiltV
         }
 
         is ResultState.Success -> {
-            navHostController.navigate(route = AuthScreen.Home.route)
+            LaunchedEffect(Unit) {
+                navHostController.navigate(route = AuthScreen.Home.route)
+            }
         }
 
         else -> {

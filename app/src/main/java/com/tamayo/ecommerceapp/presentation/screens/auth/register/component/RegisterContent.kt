@@ -2,6 +2,7 @@ package com.tamayo.ecommerceapp.presentation.screens.auth.register.component
 
 import android.widget.Toast
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -77,24 +78,10 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
 
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(top = 24.dp),
+                .fillMaxSize(),
+            verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Image(
-                modifier = Modifier
-                    .height(100.dp)
-                    .width(100.dp),
-                painter = painterResource(id = R.drawable.user_form),
-                contentDescription = ""
-            )
-
-            Text(
-                text = "Fill the form",
-                fontWeight = FontWeight.ExtraBold,
-                fontSize = 22.sp,
-                color = Color.White
-            )
 
             Spacer(modifier = Modifier.size(8.dp))
 

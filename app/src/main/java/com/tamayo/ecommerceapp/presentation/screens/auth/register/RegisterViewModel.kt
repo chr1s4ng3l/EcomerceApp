@@ -69,7 +69,7 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
     }
 
 
-    fun isValidateForm(): Boolean {
+    private fun isValidateForm(): Boolean {
 
         if (state.name.isEmpty()) {
             errorMessage = "Name required"

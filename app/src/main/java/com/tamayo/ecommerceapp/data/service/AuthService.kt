@@ -19,7 +19,7 @@ interface AuthService {
         @Field("email") email: String,
         @Field("password") password: String
     ): Response<AuthResponse>
-    @FormUrlEncoded
+
     @POST(AUTH_REGISTER)
     suspend fun register(
         @Body() user: User,
