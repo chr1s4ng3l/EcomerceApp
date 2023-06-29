@@ -13,6 +13,7 @@ import com.tamayo.ecommerceapp.domain.util.ResultState
 import com.tamayo.ecommerceapp.domain.usecases.auth.AuthUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -27,6 +28,24 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
     // LOGIN RESPONSE
     var loginResponse by mutableStateOf<ResultState<AuthResponse>?>(null)
         private set
+
+    init {
+        getSessionData()
+    }
+
+    fun getSessionData() = viewModelScope.launch {
+        authUseCase.getSessionData.invoke().collect { data ->
+            if(data != null){
+                Log.d("LoginViewModel", "Data: ==> ${data.toJson()}")
+            }else{
+                Log.d("LoginViewModel", "Data: ==> NULL")
+            }
+        }
+    }
+
+    fun saveSession(authResponse: AuthResponse) = viewModelScope.launch {
+        authUseCase.saveSession.invoke(authResponse)
+    }
 
     fun login() = viewModelScope.launch {
         if (isValidateForm()) {

@@ -25,7 +25,11 @@ class AuthDataStore @Inject constructor(private val dataStore: DataStore<Prefere
         val dataStoreKey = stringPreferencesKey(AUTH_KEY)
 
         return dataStore.data.map { pref ->
-            AuthResponse.fromJson(pref[dataStoreKey] ?: "")
+            if (pref[dataStoreKey] != null) {
+                AuthResponse.fromJson(pref[dataStoreKey]!!)
+            } else {
+                AuthResponse()
+            }
         }
     }
 }

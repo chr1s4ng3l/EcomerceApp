@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class AuthResponse(
     @SerializedName("user")
-    val user: User,
+    val user: User? = null,
     @SerializedName("token")
-    val token: String
+    val token: String? = null
 ) {
     fun toJson(): String = Gson().toJson(this)
 
