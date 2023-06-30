@@ -21,6 +21,7 @@ class AuthDataStore @Inject constructor(private val dataStore: DataStore<Prefere
         }
     }
 
+
     fun getData(): Flow<AuthResponse> {
         val dataStoreKey = stringPreferencesKey(AUTH_KEY)
 
