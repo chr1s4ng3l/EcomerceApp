@@ -10,6 +10,7 @@ import com.tamayo.ecommerceapp.presentation.navigation.screen.AuthScreen
 import com.tamayo.ecommerceapp.presentation.screens.auth.login.LoginScreen
 import com.tamayo.ecommerceapp.presentation.screens.auth.register.RegisterScreen
 import com.tamayo.ecommerceapp.presentation.screens.home.HomeScreen
+import com.tamayo.ecommerceapp.presentation.screens.roles.RolesScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 fun NavGraphBuilder.authNavGraph(navHostController: NavHostController) {
@@ -27,6 +28,10 @@ fun NavGraphBuilder.authNavGraph(navHostController: NavHostController) {
 
         composable(route = AuthScreen.Home.route) {
             HomeScreen(navHostController = navHostController)
+        }
+
+        composable(route = AuthScreen.Roles.route) {
+            RolesScreen(navHostController = navHostController)
         }
     }
 }
