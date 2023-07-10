@@ -1,4 +1,4 @@
-package com.tamayo.ecommerceapp.presentation.screens.home
+package com.tamayo.ecommerceapp.presentation.screens.client.home
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -10,9 +10,9 @@ import androidx.navigation.NavHostController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navHostController: NavHostController) {
+fun HomeScreenClient(navHostController: NavHostController) {
     Scaffold() { paddingValues ->
-        Text(modifier = Modifier.padding(paddingValues), text = "HomeScreen")
+        Text(modifier = Modifier.padding(paddingValues), text = "Client HomeScreen")
     }
 
 }

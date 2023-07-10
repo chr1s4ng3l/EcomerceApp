@@ -37,7 +37,7 @@ fun Login(navHostController: NavHostController, vm: LoginViewModel = hiltViewMod
                         }
                     }
                 } else {
-                    navHostController.navigate(route = AuthScreen.Home.route) {
+                    navHostController.navigate(route = AuthScreen.HomeClient.route) {
                         popUpTo(AuthScreen.Login.route) {
                             inclusive = true
                         }
