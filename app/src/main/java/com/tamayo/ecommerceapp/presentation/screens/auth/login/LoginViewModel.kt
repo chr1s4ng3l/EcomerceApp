@@ -1,5 +1,6 @@
 package com.tamayo.ecommerceapp.presentation.screens.auth.login
 
+import android.content.res.Resources
 import android.util.Log
 import android.util.Patterns
 import androidx.compose.runtime.getValue
@@ -33,12 +34,10 @@ class LoginViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
         getSessionData()
     }
 
-    fun getSessionData() = viewModelScope.launch {
+    private fun getSessionData() = viewModelScope.launch {
         authUseCase.getSessionData.invoke().collect { data ->
-            if(data != null){
-                Log.d("LoginViewModel", "Data: ==> ${data.toJson()}")
-            }else{
-                Log.d("LoginViewModel", "Data: ==> NULL")
+            if(!data.token.isNullOrBlank()){
+                loginResponse = ResultState.Success(data)
             }
         }
     }
