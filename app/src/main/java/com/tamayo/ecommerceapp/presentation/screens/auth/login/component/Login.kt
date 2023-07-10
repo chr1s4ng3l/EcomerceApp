@@ -30,13 +30,26 @@ fun Login(navHostController: NavHostController, vm: LoginViewModel = hiltViewMod
         is ResultState.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                navHostController.navigate(route = AuthScreen.Home.route)
+                if (response.data.user?.roles!!.size > 1) {
+                    navHostController.navigate(route = AuthScreen.Roles.route) {
+                        popUpTo(AuthScreen.Login.route) {
+                            inclusive = true
+                        }
+                    }
+                } else {
+                    navHostController.navigate(route = AuthScreen.Home.route) {
+                        popUpTo(AuthScreen.Login.route) {
+                            inclusive = true
+                        }
+                    }
+                }
             }
 
 
         }
+
         else -> {
-            if (response != null){
+            if (response != null) {
                 Toast.makeText(LocalContext.current, "Underspecified error", Toast.LENGTH_SHORT)
                     .show()
             }

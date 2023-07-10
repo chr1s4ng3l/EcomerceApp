@@ -26,7 +26,12 @@ fun Register(navHostController: NavHostController, vm: RegisterViewModel = hiltV
         is ResultState.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-                navHostController.navigate(route = AuthScreen.Home.route)
+                navHostController.navigate(route = AuthScreen.Home.route){
+                    //Delete previous screen
+                    popUpTo(AuthScreen.Register.route){
+                        inclusive = true
+                    }
+                }
             }
         }
 
