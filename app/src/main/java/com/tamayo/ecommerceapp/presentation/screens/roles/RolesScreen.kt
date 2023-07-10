@@ -14,7 +14,7 @@ fun RolesScreen(navHostController: NavHostController) {
 
     Scaffold() {paddingValues ->
 
-        RolesContent(modifier = Modifier.padding(paddingValues = paddingValues))
+        RolesContent(paddingValues = paddingValues)
 
     }
 
