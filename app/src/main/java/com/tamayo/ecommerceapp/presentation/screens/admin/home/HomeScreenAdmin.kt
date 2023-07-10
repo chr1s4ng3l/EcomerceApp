@@ -12,7 +12,7 @@ import androidx.navigation.NavHostController
 @Composable
 fun HomeScreenAdmin(navHostController: NavHostController) {
     Scaffold() { paddingValues ->
-        Text(modifier = Modifier.padding(paddingValues), text = "Client HomeScreen")
+        Text(modifier = Modifier.padding(paddingValues), text = "Admin HomeScreen")
     }
 
 }

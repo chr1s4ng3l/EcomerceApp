@@ -10,10 +10,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.tamayo.ecommerceapp.presentation.screens.roles.RolesViewModel
 
 @Composable
-fun RolesContent(paddingValues: PaddingValues, rvm: RolesViewModel = hiltViewModel()) {
+fun RolesContent(
+    paddingValues: PaddingValues,
+    navHostController: NavHostController,
+    rvm: RolesViewModel = hiltViewModel()
+) {
 
     val data = rvm.authResponse.user
 
@@ -26,7 +31,7 @@ fun RolesContent(paddingValues: PaddingValues, rvm: RolesViewModel = hiltViewMod
     ) {
 
         items(items = data?.roles ?: arrayListOf()) { rol ->
-            RolesItem(rol = rol)
+            RolesItem(rol = rol, navHostController = navHostController)
         }
 
 

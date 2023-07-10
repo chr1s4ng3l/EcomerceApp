@@ -20,7 +20,7 @@ fun RolesScreen(navHostController: NavHostController) {
     ) { paddingValues ->
 
 
-        RolesContent(paddingValues = paddingValues)
+        RolesContent(paddingValues = paddingValues, navHostController)
 
     }
 
