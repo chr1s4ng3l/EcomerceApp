@@ -26,11 +26,11 @@ fun RolesItem(
         elevation = CardDefaults.cardElevation(defaultElevation = 12.dp),
         colors = CardDefaults.outlinedCardColors(),
         onClick = {
-            navHostController.navigate(route = rol.route) {
-                popUpTo(route = AuthScreen.Roles.route) {
-                    inclusive = true
-                }
-            }
+//            navHostController.navigate(route = rol.route) {
+//                popUpTo(route = AuthScreen.Roles.route) {
+//                    inclusive = true
+//                }
+//            }
         }) {
         AsyncImage(
             modifier = Modifier

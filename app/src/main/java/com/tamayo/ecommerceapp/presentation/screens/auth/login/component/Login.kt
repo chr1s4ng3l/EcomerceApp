@@ -9,7 +9,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.tamayo.ecommerceapp.domain.util.ResultState
 import com.tamayo.ecommerceapp.presentation.components.ProgressBar
+import com.tamayo.ecommerceapp.presentation.navigation.Graph
 import com.tamayo.ecommerceapp.presentation.navigation.screen.AuthScreen
+import com.tamayo.ecommerceapp.presentation.navigation.screen.RolesScreen
 import com.tamayo.ecommerceapp.presentation.screens.auth.login.LoginViewModel
 
 @Composable
@@ -31,14 +33,14 @@ fun Login(navHostController: NavHostController, vm: LoginViewModel = hiltViewMod
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
                 if (response.data.user?.roles!!.size > 1) {
-                    navHostController.navigate(route = AuthScreen.Roles.route) {
-                        popUpTo(AuthScreen.Login.route) {
+                    navHostController.navigate(route = Graph.ROLES) {
+                        popUpTo(Graph.AUTH) {
                             inclusive = true
                         }
                     }
                 } else {
-                    navHostController.navigate(route = AuthScreen.HomeClient.route) {
-                        popUpTo(AuthScreen.Login.route) {
+                    navHostController.navigate(route = Graph.ROLES) {
+                        popUpTo(Graph.AUTH) {
                             inclusive = true
                         }
                     }
