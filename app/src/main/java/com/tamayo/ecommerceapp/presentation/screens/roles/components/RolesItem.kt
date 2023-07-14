@@ -14,7 +14,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.tamayo.ecommerceapp.domain.model.Rol
-import com.tamayo.ecommerceapp.presentation.navigation.screen.AuthScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
