@@ -38,8 +38,8 @@ fun Login(navHostController: NavHostController, vm: LoginViewModel = hiltViewMod
                             inclusive = true
                         }
                     }
-                } else {
-                    navHostController.navigate(route = Graph.ROLES) {
+                } else { // Only one rol -> Client
+                    navHostController.navigate(route = Graph.CLIENT) {
                         popUpTo(Graph.AUTH) {
                             inclusive = true
                         }

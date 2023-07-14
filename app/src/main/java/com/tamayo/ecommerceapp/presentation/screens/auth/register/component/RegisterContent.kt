@@ -182,7 +182,6 @@ fun RegisterContent(paddingValues: PaddingValues, vm: RegisterViewModel = hiltVi
                             .fillMaxWidth()
                             .height(50.dp),
                         textButton = "Confirm",
-                        color = Blue80,
                         textColor = Color.White,
                         onClick = { vm.register() })
 

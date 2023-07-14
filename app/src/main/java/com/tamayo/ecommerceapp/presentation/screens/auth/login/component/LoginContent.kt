@@ -156,7 +156,6 @@ fun LoginContent(
                             .fillMaxWidth()
                             .height(50.dp),
                         textButton = "Log In",
-                        color = Blue80,
                         textColor = Color.White,
                         onClick = { vm.login() })
 

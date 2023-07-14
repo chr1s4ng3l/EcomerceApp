@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -25,7 +26,7 @@ fun DefaultTopBar(
 
     TopAppBar(
         title = { Text(text = title, fontSize = 18.sp, fontWeight = FontWeight.Bold, color = Color.White) },
-        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = Blue80),
+        colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = MaterialTheme.colorScheme.primary),
         navigationIcon = {
             if (upAvailable){
             IconButton(onClick = { navHostController?.popBackStack() }) {

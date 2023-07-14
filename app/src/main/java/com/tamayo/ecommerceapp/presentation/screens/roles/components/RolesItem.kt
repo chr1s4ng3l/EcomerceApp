@@ -14,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.tamayo.ecommerceapp.domain.model.Rol
+import com.tamayo.ecommerceapp.presentation.navigation.Graph
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -25,11 +26,11 @@ fun RolesItem(
         elevation = CardDefaults.cardElevation(defaultElevation = 12.dp),
         colors = CardDefaults.outlinedCardColors(),
         onClick = {
-//            navHostController.navigate(route = rol.route) {
-//                popUpTo(route = AuthScreen.Roles.route) {
-//                    inclusive = true
-//                }
-//            }
+            navHostController.navigate(route = rol.route) {
+                popUpTo(route = Graph.ROLES) {
+                    inclusive = true
+                }
+            }
         }) {
         AsyncImage(
             modifier = Modifier
