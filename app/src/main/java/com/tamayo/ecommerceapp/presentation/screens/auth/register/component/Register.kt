@@ -8,6 +8,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.tamayo.ecommerceapp.domain.util.ResultState
 import com.tamayo.ecommerceapp.presentation.components.ProgressBar
+import com.tamayo.ecommerceapp.presentation.navigation.Graph
 import com.tamayo.ecommerceapp.presentation.navigation.screen.AuthScreen
 import com.tamayo.ecommerceapp.presentation.screens.auth.register.RegisterViewModel
 
@@ -26,12 +27,12 @@ fun Register(navHostController: NavHostController, vm: RegisterViewModel = hiltV
         is ResultState.Success -> {
             LaunchedEffect(Unit) {
                 vm.saveSession(response.data)
-//                navHostController.navigate(route = AuthScreen.HomeClient.route){
-//                    //Delete previous screen
-//                    popUpTo(AuthScreen.Register.route){
-//                        inclusive = true
-//                    }
-//                }
+                navHostController.navigate(route = Graph.CLIENT){
+                    //Delete previous screen
+                    popUpTo(Graph.AUTH){
+                        inclusive = true
+                    }
+                }
             }
         }
 
