@@ -21,6 +21,13 @@ class AuthDataStore @Inject constructor(private val dataStore: DataStore<Prefere
         }
     }
 
+    suspend fun delete() {
+        val dataStoreKey = stringPreferencesKey(AUTH_KEY)
+        dataStore.edit { pref ->
+            pref.remove(dataStoreKey)
+        }
+    }
+
 
     fun getData(): Flow<AuthResponse> {
         val dataStoreKey = stringPreferencesKey(AUTH_KEY)

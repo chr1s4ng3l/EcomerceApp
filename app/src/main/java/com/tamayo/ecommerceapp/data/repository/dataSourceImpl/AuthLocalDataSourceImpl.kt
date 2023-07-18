@@ -11,6 +11,8 @@ class AuthLocalDataSourceImpl @Inject constructor(private val authDataStore: Aut
     override suspend fun saveSession(authResponse: AuthResponse) =
         authDataStore.saveUser(authResponse)
 
+    override suspend fun logout() = authDataStore.delete()
+
     override fun getSessionData(): Flow<AuthResponse> = authDataStore.getData()
 
 }
