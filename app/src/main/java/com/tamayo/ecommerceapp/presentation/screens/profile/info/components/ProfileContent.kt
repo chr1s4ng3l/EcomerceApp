@@ -1,7 +1,8 @@
-package com.tamayo.ecommerceapp.presentation.screens.profile.components
+package com.tamayo.ecommerceapp.presentation.screens.profile.info.components
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,7 +31,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.End
-import androidx.compose.ui.Alignment.Companion.TopEnd
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -42,14 +42,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import coil.compose.AsyncImage
 import com.tamayo.ecomerceapp.R
 import com.tamayo.ecommerceapp.presentation.MainActivity
 import com.tamayo.ecommerceapp.presentation.components.DefaultButton
-import com.tamayo.ecommerceapp.presentation.screens.profile.ProfileViewModel
+import com.tamayo.ecommerceapp.presentation.navigation.Graph
+import com.tamayo.ecommerceapp.presentation.screens.profile.info.ProfileViewModel
 
 @Composable
 fun ProfileContent(
     paddingValues: PaddingValues,
+    navHostController: NavHostController,
     vm: ProfileViewModel = hiltViewModel()
 ) {
 
@@ -74,10 +78,10 @@ fun ProfileContent(
 
             IconButton(modifier = Modifier.align(alignment = End),
                 onClick = {
-                vm.logout()
-                activity?.finish()
-                activity?.startActivity(Intent(activity, MainActivity::class.java))
-            }) {
+                    vm.logout()
+                    activity?.finish()
+                    activity?.startActivity(Intent(activity, MainActivity::class.java))
+                }) {
                 Icon(
                     imageVector = Icons.Default.ExitToApp,
                     contentDescription = "",
@@ -85,16 +89,29 @@ fun ProfileContent(
                 )
             }
 
-            Image(
-                modifier = Modifier
-                    .size(150.dp)
-                    .clip(CircleShape)
-                    .align(alignment = CenterHorizontally),
-                painter = painterResource(
-                    id = R.drawable.user_image
-                ),
-                contentDescription = ""
-            )
+            if (!vm.user?.image.isNullOrBlank()) {
+                AsyncImage(
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(CircleShape)
+                        .align(alignment = CenterHorizontally),
+                    contentScale = ContentScale.Crop,
+                    model = vm.user?.image,
+                    contentDescription = ""
+                )
+            } else {
+                Image(
+                    modifier = Modifier
+                        .size(150.dp)
+                        .clip(CircleShape)
+                        .align(alignment = CenterHorizontally),
+                    contentScale = ContentScale.Crop,
+                    painter = painterResource(
+                        id = R.drawable.user_image
+                    ),
+                    contentDescription = ""
+                )
+            }
 
             Spacer(modifier = Modifier.weight(1f))
 
@@ -123,7 +140,7 @@ fun ProfileContent(
 
 
                         Column(modifier = Modifier.padding(horizontal = 8.dp)) {
-                            Text(text = "Christopher Tamayo")
+                            Text(text = "${vm.user?.name} ${vm.user?.lastname}")
                             Text(
                                 text = "Username",
                                 fontSize = 12.sp,
@@ -147,7 +164,7 @@ fun ProfileContent(
 
 
                         Column(modifier = Modifier.padding(horizontal = 8.dp)) {
-                            Text(text = "christopher.tamayo@gmail.com")
+                            Text(text = vm.user?.email ?: "")
                             Text(
                                 text = "Email",
                                 fontSize = 12.sp,
@@ -169,7 +186,7 @@ fun ProfileContent(
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Column(modifier = Modifier.padding(horizontal = 8.dp)) {
-                            Text(text = "(470) 328 9392")
+                            Text(text = vm.user?.phone ?: "")
                             Text(
                                 text = "Phone",
                                 fontSize = 12.sp,
@@ -186,7 +203,10 @@ fun ProfileContent(
                             .padding(bottom = 80.dp),
                         textButton = "Update Profile",
                         textColor = Color.White,
-                        onClick = { })
+                        onClick = {
+                           //Log.d("TACOS", "ProfileUpdateContent: ${vm.user}")
+                            navHostController.navigate("${Graph.PROFILE}/${vm.user?.toJson()}")
+                        })
 
                 }
 

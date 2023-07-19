@@ -44,9 +44,8 @@ import androidx.navigation.NavHostController
 import com.tamayo.ecomerceapp.R
 import com.tamayo.ecommerceapp.presentation.components.DefaultButton
 import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
-import com.tamayo.ecommerceapp.presentation.navigation.screen.AuthScreen
+import com.tamayo.ecommerceapp.presentation.navigation.screen.auth.AuthScreen
 import com.tamayo.ecommerceapp.presentation.screens.auth.login.LoginViewModel
-import com.tamayo.ecommerceapp.presentation.ui.theme.Blue80
 
 @ExperimentalMaterial3Api
 @Composable

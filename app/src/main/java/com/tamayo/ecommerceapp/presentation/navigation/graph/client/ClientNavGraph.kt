@@ -1,14 +1,15 @@
-package com.tamayo.ecommerceapp.presentation.navigation.graph
+package com.tamayo.ecommerceapp.presentation.navigation.graph.client
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.tamayo.ecommerceapp.presentation.navigation.Graph
-import com.tamayo.ecommerceapp.presentation.navigation.screen.ClientScreen
+import com.tamayo.ecommerceapp.presentation.navigation.graph.profile.profileNavGraph
+import com.tamayo.ecommerceapp.presentation.navigation.screen.client.ClientScreen
 import com.tamayo.ecommerceapp.presentation.screens.client.category.list.ClientCategoryListScreen
 import com.tamayo.ecommerceapp.presentation.screens.client.products.list.ClientProductListScreen
-import com.tamayo.ecommerceapp.presentation.screens.profile.ProfileScreen
+import com.tamayo.ecommerceapp.presentation.screens.profile.info.ProfileScreen
 
 @Composable
 fun ClientNavGraph(navHostController: NavHostController) {
@@ -28,9 +29,11 @@ fun ClientNavGraph(navHostController: NavHostController) {
 
         }
         composable(route = ClientScreen.ProfileList.route) {
-            ProfileScreen()
+            ProfileScreen(navHostController)
 
         }
+
+        profileNavGraph(navHostController)
 
 
     }

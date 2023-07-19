@@ -1,4 +1,4 @@
-package com.tamayo.ecommerceapp.presentation.navigation.screen
+package com.tamayo.ecommerceapp.presentation.navigation.screen.client
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.List
@@ -6,29 +6,30 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.graphics.vector.ImageVector
 
-sealed class AdminScreen(
+sealed class ClientScreen(
     val route: String,
     val title: String,
     val icon: ImageVector
 ) {
-    object CategoryList : AdminScreen(
-        route = "admin/category/list",
+    object CategoryList : ClientScreen(
+        route = "client/category/list",
         title = "Categories",
         icon = Icons.Default.List
 
     )
 
-    object ProductsList : AdminScreen(
-        route = "admin/product/list",
+    object ProductsList : ClientScreen(
+        route = "client/product/list",
         title = "Products",
         icon = Icons.Default.Star
 
     )
 
-    object ProfileList : AdminScreen(
-        route = "admin/profile/list",
+    object ProfileList : ClientScreen(
+        route = "client/profile/list",
         title = "Profile",
         icon = Icons.Default.Person
 
     )
+
 }

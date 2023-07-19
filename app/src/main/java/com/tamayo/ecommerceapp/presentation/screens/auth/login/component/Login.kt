@@ -10,8 +10,6 @@ import androidx.navigation.NavHostController
 import com.tamayo.ecommerceapp.domain.util.ResultState
 import com.tamayo.ecommerceapp.presentation.components.ProgressBar
 import com.tamayo.ecommerceapp.presentation.navigation.Graph
-import com.tamayo.ecommerceapp.presentation.navigation.screen.AuthScreen
-import com.tamayo.ecommerceapp.presentation.navigation.screen.RolesScreen
 import com.tamayo.ecommerceapp.presentation.screens.auth.login.LoginViewModel
 
 @Composable
