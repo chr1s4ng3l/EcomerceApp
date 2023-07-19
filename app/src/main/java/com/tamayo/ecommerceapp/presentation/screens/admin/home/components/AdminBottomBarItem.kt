@@ -9,8 +9,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.tamayo.ecommerceapp.presentation.navigation.screen.AdminScreen
-import com.tamayo.ecommerceapp.presentation.navigation.screen.ClientScreen
+import com.tamayo.ecommerceapp.presentation.navigation.screen.admin.AdminScreen
 
 @Composable
 fun RowScope.AdminBottomBarItem(

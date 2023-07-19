@@ -1,5 +1,6 @@
 package com.tamayo.ecommerceapp.presentation.screens.roles.components
 
+import android.util.Log
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -24,7 +25,6 @@ fun RolesItem(
 ) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 12.dp),
-        colors = CardDefaults.outlinedCardColors(),
         onClick = {
             navHostController.navigate(route = rol.route) {
                 popUpTo(route = Graph.ROLES) {
@@ -39,6 +39,7 @@ fun RolesItem(
             model = rol.image,
             contentDescription = "ImageRol"
         )
+
         Text(
             modifier = Modifier
                 .padding(8.dp),

@@ -1,10 +1,11 @@
-package com.tamayo.ecommerceapp.presentation.navigation.graph
+package com.tamayo.ecommerceapp.presentation.navigation.root
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import com.tamayo.ecommerceapp.presentation.navigation.Graph
+import com.tamayo.ecommerceapp.presentation.navigation.graph.auth.authNavGraph
+import com.tamayo.ecommerceapp.presentation.navigation.graph.roles.rolesNavGraph
 
 @Composable
 fun RootNavGraph(navHostController: NavHostController) {

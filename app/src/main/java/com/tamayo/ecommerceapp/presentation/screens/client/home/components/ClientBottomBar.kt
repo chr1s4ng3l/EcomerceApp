@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.tamayo.ecommerceapp.presentation.navigation.screen.ClientScreen
+import com.tamayo.ecommerceapp.presentation.navigation.screen.client.ClientScreen
 
 @Composable
 fun ClientBottomBar(navHostController: NavHostController) {
