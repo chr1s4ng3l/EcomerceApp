@@ -2,6 +2,7 @@ package com.tamayo.ecommerceapp.presentation.screens.profile.update.components
 
 import android.app.Activity
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -20,6 +21,8 @@ import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,6 +38,7 @@ import coil.compose.AsyncImage
 import com.tamayo.ecomerceapp.R
 import com.tamayo.ecommerceapp.presentation.components.DefaultButton
 import com.tamayo.ecommerceapp.presentation.components.DefaultTextField
+import com.tamayo.ecommerceapp.presentation.components.DialogCapturePicture
 import com.tamayo.ecommerceapp.presentation.screens.profile.update.ProfileUpdateViewModel
 
 @Composable
@@ -44,6 +48,15 @@ fun ProfileUpdateContent(
 
     val activity = LocalContext.current as? Activity
     val state = vm.state
+    val stateDialog = remember {
+        mutableStateOf(false)
+    }
+
+    DialogCapturePicture(
+        state = stateDialog,
+        takePhoto = {},
+        pickImage = {}
+    )
 
     Box(modifier = Modifier.padding(paddingValues)) {
         Image(
@@ -68,7 +81,8 @@ fun ProfileUpdateContent(
                     modifier = Modifier
                         .size(150.dp)
                         .clip(CircleShape)
-                        .align(alignment = CenterHorizontally),
+                        .align(alignment = CenterHorizontally)
+                        .clickable { stateDialog.value = true },
                     contentScale = ContentScale.Crop,
                     model = state.image,
                     contentDescription = ""
@@ -78,7 +92,8 @@ fun ProfileUpdateContent(
                     modifier = Modifier
                         .size(150.dp)
                         .clip(CircleShape)
-                        .align(alignment = CenterHorizontally),
+                        .align(alignment = CenterHorizontally)
+                        .clickable { stateDialog.value = true },
                     contentScale = ContentScale.Crop,
                     painter = painterResource(
                         id = R.drawable.user_image

@@ -1,6 +1,8 @@
 package com.tamayo.ecommerceapp.presentation.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -32,37 +34,45 @@ fun DialogCapturePicture(
                 .fillMaxWidth()
                 .height(150.dp),
             onDismissRequest = { state.value = false },
-            backgroundColor = MaterialTheme.colors.primary,
+            backgroundColor = MaterialTheme.colors.surface,
             title = { Text(text = "Select an option", fontSize = 20.sp) },
             buttons = {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 32.dp)
+                        .padding(vertical = 32.dp),
                 ) {
+
+                    Spacer(modifier = Modifier.width(4.dp))
+
                     OutlinedButton(
-                        modifier = Modifier.weight(1f),
-                        colors = ButtonDefaults.buttonColors(MaterialTheme.colors.primary),
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(4.dp),
                         onClick = {
                             state.value = false
                             pickImage()
                         }) {
 
-                        Text(text = "Gallery")
+                        Text(text = "Gallery", color = MaterialTheme.colors.onBackground)
 
                     }
 
                     OutlinedButton(
-                        modifier = Modifier.weight(1f),
-                        colors = ButtonDefaults.buttonColors(MaterialTheme.colors.secondary),
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(4.dp),
                         onClick = {
                             state.value = false
                             takePhoto()
                         }) {
 
-                        Text(text = "Camera")
+                        Text(text = "Camera", color = MaterialTheme.colors.onBackground)
 
                     }
+
+                    Spacer(modifier = Modifier.width(4.dp))
+
 
                 }
             }
