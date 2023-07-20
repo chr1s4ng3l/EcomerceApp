@@ -16,6 +16,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
@@ -59,7 +60,7 @@ fun ProfileUpdateContent(
         )
 
         Column(modifier = Modifier.fillMaxWidth()) {
-            
+
             Spacer(modifier = Modifier.height(16.dp))
 
             if (!vm.state.image.isNullOrBlank()) {
@@ -96,14 +97,12 @@ fun ProfileUpdateContent(
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-
-
                     DefaultTextField(
                         modifier = Modifier.fillMaxWidth(),
                         value = state.name,
                         onValueChanged = { vm.onNameInput(it) },
                         label = "Name",
-                        icon = Icons.Default.Person
+                        icon = Icons.Filled.Person
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -113,7 +112,8 @@ fun ProfileUpdateContent(
                         value = state.lastname,
                         onValueChanged = { vm.onLastNameInput(it) },
                         label = "Lastname",
-                        icon = Icons.Filled.Person
+                        icon = Icons.Outlined.Person
+
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
