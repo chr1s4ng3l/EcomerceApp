@@ -12,10 +12,21 @@ import java.io.FileOutputStream
 import java.io.OutputStream
 import java.util.*
 
+/**
+ * Custom FileProvider used to provide access to files for other applications.
+ * This class extends FileProvider and provides utility methods to work with files and URIs.
+ */
 class ComposeFileProvider : FileProvider(R.xml.file_paths) {
 
     companion object {
 
+        /**
+         * Creates a temporary file from the given Uri.
+         *
+         * @param context The context of the application.
+         * @param uri The Uri from which the file should be created.
+         * @return The created temporary file, or null if an error occurs.
+         */
         fun createFileFromUri(context: Context, uri: Uri): File? {
             return try {
                 val stream = context.contentResolver.openInputStream(uri)
@@ -32,8 +43,13 @@ class ComposeFileProvider : FileProvider(R.xml.file_paths) {
             }
         }
 
+        /**
+         * Gets a new image Uri to store images in the application's cache directory.
+         *
+         * @param context The context of the application.
+         * @return The Uri of the newly created image file.
+         */
         fun getImageUri(context: Context): Uri {
-
             val directory = File(context.cacheDir, "images")
             directory.mkdirs()
             val file = File.createTempFile(
@@ -49,6 +65,13 @@ class ComposeFileProvider : FileProvider(R.xml.file_paths) {
             )
         }
 
+        /**
+         * Converts a Bitmap into a file and returns the file's path.
+         *
+         * @param context The context of the application.
+         * @param bitmap The Bitmap to be converted to a file.
+         * @return The path of the file that contains the converted Bitmap.
+         */
         fun getPathFromBitmap(context: Context, bitmap: Bitmap): String {
             val wrapper = ContextWrapper(context)
             var file = wrapper.getDir("Images", Context.MODE_PRIVATE)

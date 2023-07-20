@@ -52,10 +52,12 @@ fun ProfileUpdateContent(
         mutableStateOf(false)
     }
 
+    vm.resultingActivityHandler.Handle()
+
     DialogCapturePicture(
         state = stateDialog,
-        takePhoto = {},
-        pickImage = {}
+        takePhoto = { vm.takePhoto()},
+        pickImage = {vm.pickImage()}
     )
 
     Box(modifier = Modifier.padding(paddingValues)) {
