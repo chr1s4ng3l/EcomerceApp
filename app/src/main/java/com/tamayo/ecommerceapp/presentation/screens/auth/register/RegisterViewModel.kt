@@ -11,6 +11,7 @@ import com.tamayo.ecommerceapp.domain.model.User
 import com.tamayo.ecommerceapp.domain.repository.AuthRepository
 import com.tamayo.ecommerceapp.domain.usecases.auth.AuthUseCase
 import com.tamayo.ecommerceapp.domain.util.ResultState
+import com.tamayo.ecommerceapp.presentation.screens.auth.register.mapper.toUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -34,15 +35,9 @@ class RegisterViewModel @Inject constructor(private val authUseCase: AuthUseCase
 
     fun register() = viewModelScope.launch {
         if (isValidateForm()) {
-            val user = User(
-                name = state.name,
-                lastname = state.lastName,
-                email = state.email,
-                password = state.password,
-                phone = state.phone
-            )
+
             registerResponse = ResultState.Loading
-            val result = authUseCase.register(user)
+            val result = authUseCase.register(state.toUser())
             registerResponse = result //Data or Error
         }
     }
