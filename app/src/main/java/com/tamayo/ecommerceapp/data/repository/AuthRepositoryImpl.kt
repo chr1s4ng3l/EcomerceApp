@@ -12,8 +12,9 @@ import com.tamayo.ecommerceapp.domain.util.ResultState
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 import java.io.IOException
+import javax.inject.Inject
 
-class AuthRepositoryImpl(
+class AuthRepositoryImpl @Inject constructor(
     private val authRemoteDataSource: AuthRemoteDataSource,
     private val authLocalDataSource: AuthLocalDataSource
 ) : AuthRepository {
@@ -25,6 +26,8 @@ class AuthRepositoryImpl(
     override suspend fun register(user: User): ResultState<AuthResponse> = send(
         authRemoteDataSource.register(user)
     )
+
+    override suspend fun updateSession(user: User) = authLocalDataSource.updateSession(user)
 
     override suspend fun logout() = authLocalDataSource.logout()
 
