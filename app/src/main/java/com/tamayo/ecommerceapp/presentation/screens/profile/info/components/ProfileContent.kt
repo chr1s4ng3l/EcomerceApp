@@ -92,7 +92,7 @@ fun ProfileContent(
             if (!vm.user?.image.isNullOrBlank()) {
                 AsyncImage(
                     modifier = Modifier
-                        .size(150.dp)
+                        .size(200.dp)
                         .clip(CircleShape)
                         .align(alignment = CenterHorizontally),
                     contentScale = ContentScale.Crop,
@@ -102,7 +102,7 @@ fun ProfileContent(
             } else {
                 Image(
                     modifier = Modifier
-                        .size(150.dp)
+                        .size(200.dp)
                         .clip(CircleShape)
                         .align(alignment = CenterHorizontally),
                     contentScale = ContentScale.Crop,

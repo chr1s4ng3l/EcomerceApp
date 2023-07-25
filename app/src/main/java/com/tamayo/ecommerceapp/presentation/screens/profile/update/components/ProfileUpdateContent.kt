@@ -1,6 +1,7 @@
 package com.tamayo.ecommerceapp.presentation.screens.profile.update.components
 
 import android.app.Activity
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -56,8 +57,8 @@ fun ProfileUpdateContent(
 
     DialogCapturePicture(
         state = stateDialog,
-        takePhoto = { vm.takePhoto()},
-        pickImage = {vm.pickImage()}
+        takePhoto = { vm.takePhoto() },
+        pickImage = { vm.pickImage() }
     )
 
     Box(modifier = Modifier.padding(paddingValues)) {
@@ -76,12 +77,12 @@ fun ProfileUpdateContent(
 
         Column(modifier = Modifier.fillMaxWidth()) {
 
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             if (!vm.state.image.isNullOrBlank()) {
                 AsyncImage(
                     modifier = Modifier
-                        .size(150.dp)
+                        .size(200.dp)
                         .clip(CircleShape)
                         .align(alignment = CenterHorizontally)
                         .clickable { stateDialog.value = true },
@@ -92,7 +93,7 @@ fun ProfileUpdateContent(
             } else {
                 Image(
                     modifier = Modifier
-                        .size(150.dp)
+                        .size(200.dp)
                         .clip(CircleShape)
                         .align(alignment = CenterHorizontally)
                         .clickable { stateDialog.value = true },
@@ -151,7 +152,9 @@ fun ProfileUpdateContent(
                         .padding(bottom = 16.dp),
                         textButton = "Done",
                         textColor = Color.White,
-                        onClick = { })
+                        onClick = {
+                            Log.d("TAG", "ProfileUpdateContent: ${state.image}")
+                            vm.onUpdate() })
 
                 }
 

@@ -7,15 +7,18 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tamayo.ecommerceapp.domain.model.User
 import com.tamayo.ecommerceapp.domain.usecases.auth.AuthUseCase
+import com.tamayo.ecommerceapp.domain.usecases.users.UpdateUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ProfileViewModel @Inject constructor(private val authUseCase: AuthUseCase) : ViewModel() {
+class ProfileViewModel @Inject constructor(
+    private val authUseCase: AuthUseCase
+) : ViewModel() {
 
     var user by mutableStateOf<User?>(null)
-    private set
+        private set
 
     init {
         getSessionData()

@@ -9,6 +9,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tamayo.ecommerceapp.domain.model.User
 import com.tamayo.ecommerceapp.domain.usecases.auth.AuthUseCase
+import com.tamayo.ecommerceapp.domain.usecases.users.UpdateUserUseCase
+import com.tamayo.ecommerceapp.domain.usecases.users.UsersUseCase
+import com.tamayo.ecommerceapp.domain.util.ResultState
+import com.tamayo.ecommerceapp.presentation.screens.profile.update.mapper.toUser
 import com.tamayo.ecommerceapp.presentation.util.ComposeFileProvider
 import com.tamayo.ecommerceapp.presentation.util.ResultingActivityHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -21,6 +25,7 @@ import javax.inject.Inject
 class ProfileUpdateViewModel @Inject constructor(
     private val authUseCase: AuthUseCase,
     private val saveStateHandle: SavedStateHandle,
+    private val userUseCase: UsersUseCase,
     @ApplicationContext private val context: Context
 ) :
     ViewModel() {
@@ -29,20 +34,49 @@ class ProfileUpdateViewModel @Inject constructor(
 
     //Arguments
     val data = saveStateHandle.get<String>("user")
-    val user = User.fromJson(data!!)
+    var user = User.fromJson(data!!)
 
     //Images
     var file: File? = null
     val resultingActivityHandler = ResultingActivityHandler() // Work with images in the view model
+
+    var updateResponse by mutableStateOf<ResultState<User>?>(null)
+        private set
 
     init {
         state = state.copy(
             name = user.name,
             lastname = user.lastname,
             phone = user.phone,
-            image = user.image?.let { user.image } ?: ""
+            image = user.image
         )
 
+    }
+
+    fun onUpdate() {
+        if (file != null) {
+            updateWithImage()
+        }
+        else {
+            updateProfile()
+        }
+    }
+
+    private fun updateWithImage() = viewModelScope.launch {
+        updateResponse = ResultState.Loading
+        val result = userUseCase.updateUserWithImageUseCase(user.id ?: " ", state.toUser(), file!!)
+        updateResponse = result
+    }
+
+    fun updateSession(userResponse: User) = viewModelScope.launch {
+        authUseCase.updateSessionUseCase.invoke(userResponse)
+    }
+
+    private fun updateProfile() = viewModelScope.launch {
+
+        updateResponse = ResultState.Loading
+        val result = userUseCase.updateUserUseCase(user.id ?: " ", state.toUser())
+        updateResponse = result
     }
 
     fun pickImage() = viewModelScope.launch {
