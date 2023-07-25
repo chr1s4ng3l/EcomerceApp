@@ -9,17 +9,17 @@ data class User(
     @SerializedName("id")
     val id: String? = null,
     @SerializedName("name")
-    val name: String,
+    var name: String,
     @SerializedName("lastname")
-    val lastname: String,
+    var lastname: String,
     @SerializedName("email")
-    var email: String,
+    var email: String? = null,
     @SerializedName("phone")
-    val phone: String,
+    var phone: String,
     @SerializedName("password")
     val password: String? = null,
     @SerializedName("image")
-    val image: String? = null,
+    var image: String? = null,
     @SerializedName("notification_token")
     val notificationToke: String? = null,
     @SerializedName("roles")
