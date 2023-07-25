@@ -39,7 +39,7 @@ class ComposeFileProvider : FileProvider(R.xml.file_paths) {
                 return file
             } catch (e: Exception) {
                 e.printStackTrace()
-                return null
+                null
             }
         }
 
