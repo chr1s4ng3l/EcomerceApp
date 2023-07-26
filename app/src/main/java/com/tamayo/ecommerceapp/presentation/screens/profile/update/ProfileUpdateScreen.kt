@@ -5,7 +5,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
-import com.tamayo.ecommerceapp.domain.model.User
 import com.tamayo.ecommerceapp.presentation.components.DefaultTopBar
 import com.tamayo.ecommerceapp.presentation.screens.profile.update.components.ProfileUpdateContent
 import com.tamayo.ecommerceapp.presentation.screens.profile.update.components.UpdateUser

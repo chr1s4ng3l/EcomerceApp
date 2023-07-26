@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tamayo.ecommerceapp.domain.model.User
 import com.tamayo.ecommerceapp.domain.usecases.auth.AuthUseCase
-import com.tamayo.ecommerceapp.domain.usecases.users.UpdateUserUseCase
 import com.tamayo.ecommerceapp.domain.usecases.users.UsersUseCase
 import com.tamayo.ecommerceapp.domain.util.ResultState
 import com.tamayo.ecommerceapp.presentation.screens.profile.update.mapper.toUser
