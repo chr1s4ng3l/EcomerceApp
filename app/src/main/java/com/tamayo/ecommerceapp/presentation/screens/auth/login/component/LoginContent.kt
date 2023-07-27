@@ -88,18 +88,6 @@ fun LoginContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
 
-            Image(
-                modifier = Modifier.size(100.dp),
-                painter = painterResource(id = R.drawable.shopping_cart_blue),
-                contentDescription = "blue cart"
-            )
-
-            Text(
-                text = "Ecommerce App",
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-                fontSize = 22.sp
-            )
 
             Spacer(modifier = Modifier.weight(1f))
 
